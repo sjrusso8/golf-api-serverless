@@ -111,6 +111,8 @@ class AllCourseDetailsSerializer(serializers.ModelSerializer):
             'whs_course_id',
             'to_confirm',
             'tg_data_is_correct',
+            'season_start',
+            'seaon_end',
             'gps_holes',
             'tees'
         )

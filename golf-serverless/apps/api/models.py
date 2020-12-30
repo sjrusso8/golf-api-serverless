@@ -1,6 +1,7 @@
 from types import LambdaType
 from django.db import models
 from django.db.models import Sum, Avg, F
+from django.db.models.fields import CharField
 from django.db.models.fields.related import ForeignKey
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
@@ -103,6 +104,11 @@ class Course(TimestampedModel):
 
     city_url = models.SlugField(_("City Url"), db_index=True)
 
+    # Additional fields
+    season_start = models.CharField(
+        _("Season Start"), max_length=10, blank=True, null=True)
+    season_end = models.CharField(
+        _("Season End"), max_length=10, blank=True, null=True)
     class Meta:
         verbose_name = _("Course")
         verbose_name_plural = _("Courses")

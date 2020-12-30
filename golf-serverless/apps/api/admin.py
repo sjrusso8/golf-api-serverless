@@ -74,7 +74,9 @@ class CourseAdmin(admin.ModelAdmin):
                 'archname',
                 'facility_id',
                 'status',
-                'whs_course_id'
+                'whs_course_id',
+                'season_start',
+                'season_end'
             )
         }),
         ("Admin Review", {
