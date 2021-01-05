@@ -112,7 +112,7 @@ class AllCourseDetailsSerializer(serializers.ModelSerializer):
             'to_confirm',
             'tg_data_is_correct',
             'season_start',
-            'seaon_end',
+            'season_end',
             'gps_holes',
             'tees'
         )
