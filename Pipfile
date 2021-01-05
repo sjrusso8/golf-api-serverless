@@ -13,6 +13,9 @@ django-debug-toolbar = "*"
 django-cors-headers = "*"
 requests = "*"
 pillow = "*"
+django-s3-storage = "*"
+django-s3-sqlite = "*"
+zappa = "*"
 
 [dev-packages]
 
