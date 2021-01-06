@@ -16,6 +16,7 @@ pillow = "*"
 django-s3-storage = "*"
 django-s3-sqlite = "*"
 zappa = "*"
+pytest-django = "*"
 
 [dev-packages]
 

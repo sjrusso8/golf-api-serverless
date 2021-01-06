@@ -12,11 +12,7 @@ def user_A(db) -> User:
     return create_app_user(email="dummyemail@fakeremail.com")
 
 def test_user_detail(user_A: User):
-    assert (
-        reverse("users-list", kwargs={"pk": user_A.pk})
-        == f"/api/users/{user_A.pk}/"
-    )
-    assert resolve(f"/api/users/{user_A.pk}/").view_name == "users-list"
+    assert resolve(f"/api/users/{user_A.pk}/").view_name == "users-detail"
 
 
 def test_user_list():

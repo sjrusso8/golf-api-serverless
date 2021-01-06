@@ -19,6 +19,7 @@ sftp-config.json
 # Basics
 *.py[cod]
 __pycache__
+.pytest_cache
 
 # Logs
 logs
@@ -81,4 +82,4 @@ venv
 
 aws/
 
-*zappa_setttings.json*
+zappa_setttings.json
