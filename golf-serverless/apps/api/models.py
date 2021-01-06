@@ -4,7 +4,7 @@ from django.db.models import Sum, Avg, F
 from django.db.models.fields import CharField
 from django.db.models.fields.related import ForeignKey
 from django.utils.text import slugify
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from apps.core.models import TimestampedModel
 from apps.core.utils import ROUND_TYPE, SHOT_SHAPE, OUTCOME, GENERIC_CLUBS, PENALTIES

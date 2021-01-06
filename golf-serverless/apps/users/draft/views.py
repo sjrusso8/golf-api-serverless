@@ -3,13 +3,9 @@ from django.contrib.auth.models import AnonymousUser
 from django.http.response import Http404
 from django.test import RequestFactory
 
-from demo_project.users.models import User
-from demo_project.users.tests.factories import UserFactory
-from demo_project.users.views import (
-    UserRedirectView,
-    UserUpdateView,
-    user_detail_view,
-)
+from apps.users.models import User
+from .factories import UserFactory
+from apps.users.views import UserViewSet
 
 pytestmark = pytest.mark.django_db
 
@@ -24,7 +20,7 @@ class TestUserUpdateView:
     """
 
     def test_get_success_url(self, user: User, rf: RequestFactory):
-        view = UserUpdateView()
+        view = UserViewSet()
         request = rf.get("/fake-url/")
         request.user = user
 
@@ -33,7 +29,7 @@ class TestUserUpdateView:
         assert view.get_success_url() == f"/users/{user.username}/"
 
     def test_get_object(self, user: User, rf: RequestFactory):
-        view = UserUpdateView()
+        view = UserViewSet()
         request = rf.get("/fake-url/")
         request.user = user
 
@@ -44,7 +40,7 @@ class TestUserUpdateView:
 
 class TestUserRedirectView:
     def test_get_redirect_url(self, user: User, rf: RequestFactory):
-        view = UserRedirectView()
+        view = UserViewSet()
         request = rf.get("/fake-url")
         request.user = user
 
@@ -58,7 +54,7 @@ class TestUserDetailView:
         request = rf.get("/fake-url/")
         request.user = UserFactory()
 
-        response = user_detail_view(request, username=user.username)
+        response = UserViewSet(request, username=user.username)
 
         assert response.status_code == 200
 
@@ -66,7 +62,7 @@ class TestUserDetailView:
         request = rf.get("/fake-url/")
         request.user = AnonymousUser()  # type: ignore
 
-        response = user_detail_view(request, username=user.username)
+        response = UserViewSet(request, username=user.username)
 
         assert response.status_code == 302
         assert response.url == "/accounts/login/?next=/fake-url/"
@@ -76,4 +72,4 @@ class TestUserDetailView:
         request.user = UserFactory(username="UserName")
 
         with pytest.raises(Http404):
-            user_detail_view(request, username="username")
+            UserViewSet(request, username="username")

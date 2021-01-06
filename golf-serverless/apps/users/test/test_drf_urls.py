@@ -1,24 +1,24 @@
 import pytest
 from django.urls import resolve, reverse
 
-from demo_project.users.models import User
+from apps.users.models import User
+from .factories import create_app_user
 
 pytestmark = pytest.mark.django_db
 
 
-def test_user_detail(user: User):
+@pytest.fixture
+def user_A(db) -> User:
+    return create_app_user(email="dummyemail@fakeremail.com")
+
+def test_user_detail(user_A: User):
     assert (
-        reverse("api:user-detail", kwargs={"username": user.username})
-        == f"/api/users/{user.username}/"
+        reverse("users-list", kwargs={"pk": user_A.pk})
+        == f"/api/users/{user_A.pk}/"
     )
-    assert resolve(f"/api/users/{user.username}/").view_name == "api:user-detail"
+    assert resolve(f"/api/users/{user_A.pk}/").view_name == "users-list"
 
 
 def test_user_list():
-    assert reverse("api:user-list") == "/api/users/"
-    assert resolve("/api/users/").view_name == "api:user-list"
-
-
-def test_user_me():
-    assert reverse("api:user-me") == "/api/users/me/"
-    assert resolve("/api/users/me/").view_name == "api:user-me"
+    assert reverse("users-list") == "/api/users"
+    assert resolve("/api/users/").view_name == "users-list"
