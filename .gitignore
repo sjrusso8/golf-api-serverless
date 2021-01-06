@@ -80,3 +80,5 @@ media/
 venv
 
 aws/
+
+*zappa_setttings.json*
