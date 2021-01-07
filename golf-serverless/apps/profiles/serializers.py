@@ -1,6 +1,5 @@
 from django.http import request
 from apps.profiles.models import Profile
-from apps.users.serializers import UserSerializer
 
 from rest_framework import serializers
 

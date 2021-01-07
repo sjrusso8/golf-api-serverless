@@ -34,6 +34,8 @@ THIRD_PARTY_APPS = [
     'django_extensions',
     'debug_toolbar',
     'corsheaders',
+    'django_s3_sqlite',
+    'django_s3_storage'
 ]
 
 LOCAL_APPS = [

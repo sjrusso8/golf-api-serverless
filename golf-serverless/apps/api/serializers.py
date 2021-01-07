@@ -1,14 +1,11 @@
 from rest_framework import serializers
-from rest_framework.fields import SerializerMethodField
 from .models import *
-from apps.users.serializers import UserSerializer
 from apps.users.models import User
 
 '''
 Creation of the various Serializers for the GOLF Project
 
 '''
-
 
 class CourseListSerializer(serializers.ModelSerializer):
     """ Additional model to add the ability to search on a read-only """

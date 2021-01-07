@@ -14,6 +14,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from config.api_router import api_router
 
 urlpatterns = [
+    path("", views.landing, name="landing_page"),
     path(settings.ADMIN_URL, admin.site.urls),
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('logout/', logout, {'next_page': '/'}, name='logout'),

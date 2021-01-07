@@ -1,4 +1,3 @@
-import requests
 from uuid import uuid4
 
 from django.contrib.auth import authenticate, login

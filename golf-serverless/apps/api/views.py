@@ -1,16 +1,16 @@
 from django.shortcuts import render
 from django.db.models import Prefetch
+from django.http import JsonResponse
 
 from rest_framework import viewsets, generics, filters
 from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.decorators import permission_classes
-from rest_framework.response import Response
 from rest_framework.pagination import LimitOffsetPagination
 
 from .mixins import MultipleFieldLookupMixin
 
 from .serializers import *
-from .models import Course, RoundData, ShotData, Hole, Tee
+from .models import Course, Tee
 # Create your views here.
 
 
@@ -110,3 +110,10 @@ class UserPracticeViewSet(viewsets.ModelViewSet):
             return PracticeData.objects.all()
         else:
             PracticeData.objects.filter(user__pk=user.pk)
+
+def landing(request):
+    data = {
+        'message': 'Hello API',
+        'is_active': True,
+    }
+    return JsonResponse(data)

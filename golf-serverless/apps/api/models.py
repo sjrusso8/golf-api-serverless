@@ -1,15 +1,10 @@
-from types import LambdaType
 from django.db import models
 from django.db.models import Sum, Avg, F
-from django.db.models.fields import CharField
-from django.db.models.fields.related import ForeignKey
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from apps.core.models import TimestampedModel
 from apps.core.utils import ROUND_TYPE, SHOT_SHAPE, OUTCOME, GENERIC_CLUBS, PENALTIES
-
-from apps.users.models import User
 
 # Create your models here.
 
@@ -154,7 +149,7 @@ class Hole(TimestampedModel):
     Holes are also related to :model:'api.ShotData' so that a user can track their shots on each hole
 
     Every Hole has:
-        - Tee -> foriegn key to :model:'api.Tee'
+        - Tee -> foreign key to :model:'api.Tee'
         - Hole number -> Char / (1 - 18) or In/Out/Total)
         - Index -> positive int / 1-18 or blank
         - Par -> positive int / 3,4,5
