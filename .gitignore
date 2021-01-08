@@ -82,4 +82,4 @@ venv
 
 aws/
 
-*zappa_setttings.json
+zappa_settings.json
