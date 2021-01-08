@@ -14,7 +14,7 @@ from .models import Course, Tee
 # Create your views here.
 
 
-# @permission_classes([IsAdminUser])
+@permission_classes([IsAdminUser])
 class AllCourseEditorViewSet(viewsets.ModelViewSet):
     """ Define an end point to edit the all Course Data
 
