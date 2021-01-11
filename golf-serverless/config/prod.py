@@ -1,6 +1,6 @@
 from .settings import *
 
-DEBUG = True
+DEBUG = False
 ADMIN_URL = env.str("DJANGO_ADMIN_URL")
 
 # Use S3 for static content

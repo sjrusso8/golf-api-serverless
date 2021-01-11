@@ -10,12 +10,13 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny,IsAuthenticated
+from rest_framework.decorators import permission_classes
 
 from apps.users.models import User
 from apps.users.serializers import UserSerializer, UserWriteSerializer, UserTokenObtainPairSerializer
 
-
+@permission_classes([IsAuthenticated])
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
