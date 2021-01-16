@@ -35,7 +35,7 @@ class AllCourseEditorViewSet(viewsets.ModelViewSet):
     search_fields = ['name', 'city', 'state']
 
 
-@permission_classes([IsAuthenticatedOrReadOnly])
+@permission_classes([IsAuthenticated])
 class CourseLookupViewSet(generics.ListAPIView):
     """ Define an end point for a user search to for courses. Implemented within the Search Bar of the front end app """
     queryset = Course.objects.all()
@@ -45,7 +45,7 @@ class CourseLookupViewSet(generics.ListAPIView):
     search_fields = ['name', 'city', 'state']
 
 
-@permission_classes([IsAuthenticatedOrReadOnly])
+@permission_classes([IsAuthenticated])
 class CourseDetailsViewSet(MultipleFieldLookupMixin,
                            generics.RetrieveAPIView):
     """ Define an end point to retrieve all course data as read_only

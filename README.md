@@ -22,3 +22,11 @@ In order to leverage the best of serverless and my knowledge of Python I used th
 
 In order for the REST API to serve data from the AWS API Gateway it needs to source the data from somewhere.  To make the setup very simple (and cheap) I deployed the SQLite database into a S3 bucket.  The REST API sources the data from a secure bucket when it is called, and loads the data into JSON.
 
+## Using Zappa
+
+When deploying with Zappa make sure you run these handful of commands after deploying.
+
+> zappa manage dev "makemigrations"
+> zappa manage dev "migrate"
+> zappa manage dev create_admin_user < user > < password >
+> zappa manage dev "collectstatic --noinput"
