@@ -20,13 +20,13 @@ I really like to explore different frontend designs, and so I wanted to ensure I
 
 In order to leverage the best of serverless and my knowledge of Python I used the Django Rest Framework (DRF) and Zappa.  DRF makes creating a REST API a breeze, and Zappa makes deploying Python code to AWS super simple.  The hardest part is just configuring the different IAM policies inside AWS.
 
-In order for the REST API to serve data from the AWS API Gateway it needs to source the data from somewhere.  To make the setup very simple (and cheap) I deployed the SQLite database into a S3 bucket.  The REST API sources the data from a secure bucket when it is called, and loads the data into JSON.
+In order for the REST API to serve data from the AWS API Gateway it needs to source the data from somewhere.  To make the setup completely serverless, data is saved to an Aurora Serverless DB.
 
 ## Using Zappa
 
 When deploying with Zappa make sure you run these handful of commands after deploying.
 
-> zappa manage dev "makemigrations"
-> zappa manage dev "migrate"
-> zappa manage dev create_admin_user < user > < password >
+> zappa manage dev create_db
+> zappa manage dev migrate
+> zappa invoke --raw dev "from apps.users.models import User; User.objects.create_superuser('< email >', '< password >')"
 > zappa manage dev "collectstatic --noinput"

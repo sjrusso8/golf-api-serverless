@@ -14,9 +14,10 @@ django-cors-headers = "*"
 requests = "*"
 pillow = "*"
 django-s3-storage = "*"
-django-s3-sqlite = "*"
 zappa = "*"
 pytest-django = "*"
+psycopg2 = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 

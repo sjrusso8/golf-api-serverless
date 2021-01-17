@@ -34,7 +34,6 @@ THIRD_PARTY_APPS = [
     'django_extensions',
     'debug_toolbar',
     'corsheaders',
-    'django_s3_sqlite',
     'django_s3_storage'
 ]
 
@@ -67,7 +66,6 @@ MIDDLEWARE = [
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = env.bool('DEBUG')
 SECRET_KEY = env.str('SECRET_KEY')
-# SECRET_KEY = '&8AHrrgN.7l:S&NWho{b:3vg8>A9^{l,@mxm!^uP~#@q=F)K>{'
 
 # DOMAINS
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])

@@ -18,11 +18,24 @@ PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
 DEFAULT_FILE_STORAGE = 'django_s3_storage.storage.S3Storage'
 
-# Use S3 for SQLite database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': env.str('AURORA_DB'), # dbname
+#         'USER': env.str('AURORA_ADMIN'), # master username
+#         'PASSWORD': env.str('AURORA_PASSWORD'), # master password
+#         'HOST': env.str('AURORA_ENDPOINT'), # Endpoint
+#         'PORT': '3306',
+#     }
+# }
+
 DATABASES = {
-     'default': {
-         'ENGINE': 'django_s3_sqlite',
-         'NAME': env.str('SQLITE_DB'),
-         'BUCKET':  env.str('AWS_S3_SQLITE'),
-     }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env.str('AURORA_DB'),
+        'USER': env.str('AURORA_ADMIN'),
+        'PASSWORD': env.str('AURORA_PASSWORD'),
+        'HOST': env.str('AURORA_ENDPOINT'),
+        'PORT': 5432,
+    },
 }
