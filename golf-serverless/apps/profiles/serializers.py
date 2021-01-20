@@ -9,12 +9,13 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     first_name = serializers.CharField(source='user.first_name')
     last_name = serializers.CharField(source='user.last_name')
+    gender = serializers.CharField(source='get_gender_display')
     bio = serializers.CharField(allow_blank=True, required=False)
     following = serializers.SerializerMethodField()
 
     class Meta:
         model = Profile
-        fields = ('first_name', 'last_name', 'bio', 'gender', 'following',)
+        fields = ('first_name', 'last_name', 'hometown', 'bio', 'gender', 'following',)
 
     def get_following(self, instance):
         request = self.context.get('request', None)

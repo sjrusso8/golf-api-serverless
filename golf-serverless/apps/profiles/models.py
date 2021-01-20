@@ -28,15 +28,20 @@ class Profile(TimestampedModel):
 
     gender = models.CharField(
         _("Gender"), choices=GENDER_CHOICES, max_length=50, default='N')
+    
+    hometown = models.CharField(
+        _("Hometown"), blank=True, max_length=50)
 
     follows = models.ManyToManyField(
         'self',
         related_name='followed_by',
+        blank=True,
         symmetrical=False
     )
 
     favorites = models.ManyToManyField(
         'api.Course',
+        blank=True,
         related_name='favorited_courses'
     )
 

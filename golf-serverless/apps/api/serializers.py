@@ -134,6 +134,7 @@ class AllCourseDetailsSerializer(serializers.ModelSerializer):
 
 class ShotDataPenaltiesSerializer(serializers.ModelSerializer):
     """ serializer for Shot Data Penalties. Feeds into ShotDataSerializer """
+    penalties = serializers.CharField(source='get_penalties_display')
     class Meta:
         model = ShotDataPenalties
         fields = (
@@ -143,6 +144,9 @@ class ShotDataPenaltiesSerializer(serializers.ModelSerializer):
 
 class ShotDataSerializer(serializers.ModelSerializer):
     """ Serializer for ShotData and feds into RoundDataSerializer """
+    fairway_hit = serializers.CharField(source='get_fairway_hit_display')
+    gir_flag = serializers.CharField(source='get_gir_flag_display')
+    putt_accuracy = serializers.CharField(source='get_putt_accuracy_display')
 
     shot_penalties = ShotDataPenaltiesSerializer(many=True)
 
@@ -399,6 +403,8 @@ class UserShotDetailsSerializer(serializers.ModelSerializer):
 
 
 class UserPracticeDataSerializer(serializers.ModelSerializer):
+    club = serializers.CharField(source='get_club_display')
+    shot_shape = serializers.CharField(source='get_shot_shape_display')
     class Meta:
         model = PracticeData
         fields = '__all__'
