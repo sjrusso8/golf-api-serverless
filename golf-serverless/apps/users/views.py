@@ -18,9 +18,16 @@ from apps.users.serializers import UserSerializer, UserWriteSerializer, UserToke
 
 @permission_classes([IsAuthenticated])
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+    # queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = []
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_staff:
+            return User.objects.all()
+        else:
+            return User.objects.filter(pk=user.pk)
 
     def get_serializer_class(self):
         if self.action in ['list', 'retrieve']:

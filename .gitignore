@@ -85,4 +85,6 @@ aws/
 zappa_settings.json
 
 golf_caddie.db
-golfserverless
+golfserverlessdb
+
+test_api

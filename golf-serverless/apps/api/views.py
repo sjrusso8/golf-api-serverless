@@ -77,7 +77,7 @@ class UserRoundDataViewSet(viewsets.ModelViewSet):
         if user.is_staff:
             return User.objects.all()
         else:
-            User.objects.filter(pk=user.pk)
+            return User.objects.filter(pk=user.pk)
 
 
 @permission_classes([IsAuthenticated])
@@ -93,7 +93,7 @@ class UserShotDetailsViewSet(viewsets.ModelViewSet):
         if user.is_staff:
             return User.objects.all()
         else:
-            User.objects.filter(pk=user.pk)
+            return User.objects.filter(pk=user.pk) # potentially update to self.request.user.pk or maybe id
 
 
 @permission_classes([IsAuthenticated])
@@ -109,7 +109,7 @@ class UserPracticeViewSet(viewsets.ModelViewSet):
         if user.is_staff:
             return PracticeData.objects.all()
         else:
-            PracticeData.objects.filter(user__pk=user.pk)
+            return PracticeData.objects.filter(user=user.pk)
 
 def landing(request):
     data = {
