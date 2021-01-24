@@ -87,4 +87,4 @@ zappa_settings.json
 golf_caddie.db
 golfserverlessdb
 
-test_api
+test_api.http
