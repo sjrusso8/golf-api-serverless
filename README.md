@@ -4,9 +4,11 @@
 
 Check out the demo site of the API in action.  
 
-The user account is *joegolfer@golfapi.com* and password is *overpar!*
+The user account is *joegolfer@golfapi.com* and password is *overpar!*.  
 
 [Golf Caddie Live Demo](golf.stevenjrusso.com/login)
+
+**Please note** logging in for the first time might take awhile since the lambda function needs to start up.
 
 ## Overview
 
@@ -21,7 +23,11 @@ To make this API worth while it meant that I had to collect A LOT of golf course
 
 ## Why Serverless?
 
+### Pros
 Serverless computing has become a huge topic in the cloud world.  Serverless computing makes creating different services super agile, and you can respond to changes faster.   The components used in this project relate heavily on **AWS Lambda** and **Aurora Serverless Postgres**. The combination of these two leads to a super reduced cost, automatic scaling, and high availability.  
+
+### Cons
+Serverless computing has an additional factor called 'cold start time'.  A 'cold start time' is the time it takes the AWS Lambda to load, mount, and run the script.  This is noticeable when trying to login with the dummy user for the first time.
 
 
 ## How does it work?
