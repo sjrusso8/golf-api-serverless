@@ -6,7 +6,7 @@ Check out the demo site of the API in action.
 
 The user account is *joegolfer@golfapi.com* and password is *overpar!*
 
-[Live Demo](golf.stevenjrusso.com)
+[Golf Caddie Live Demo](golf.stevenjrusso.com/login)
 
 ## Overview
 
@@ -29,6 +29,21 @@ Serverless computing has become a huge topic in the cloud world.  Serverless com
 In order to leverage the best of serverless and my knowledge of Python I used the Django Rest Framework (DRF) and Zappa.  DRF makes creating a REST API a breeze, and Zappa makes deploying Python code to AWS Lambda super simple.  The hardest part is just configuring the different IAM policies inside AWS.
 
 In order for the REST API to serve data from the AWS API Gateway it needs to source the data from somewhere.  The static assets are stored in S3, and all the data is saved to an Aurora Serverless DB.
+
+## API Docs
+
+Link to swagger docs
+
+## Areas for more development
+
+- [x] JWT Authentication
+- [x] User Profiles with images
+- [x] Round Summary
+- [x] Shot by Shot statistics
+- [x] Mobile friendly UI 
+- [ ] Render GPS Coordinates in UI
+- [ ] User forms to post detailed data to API
+- [ ] Anything else?
 
 ## Using Zappa
 
