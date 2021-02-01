@@ -50,6 +50,9 @@ Link to swagger docs
 When deploying with Zappa make sure you run these handful of commands after deploying.
 
 > zappa manage dev create_db
+
 > zappa manage dev migrate
+
 > zappa invoke --raw dev "from apps.users.models import User; User.objects.create_superuser('< email >', '< password >')"
+
 > zappa manage dev "collectstatic --noinput"
