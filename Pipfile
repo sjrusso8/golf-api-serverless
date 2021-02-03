@@ -18,6 +18,7 @@ zappa = "*"
 pytest-django = "*"
 psycopg2 = "*"
 psycopg2-binary = "*"
+drf-yasg = "*"
 
 [dev-packages]
 

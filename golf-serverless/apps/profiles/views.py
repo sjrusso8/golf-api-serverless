@@ -2,11 +2,7 @@ from rest_framework import viewsets
 
 from .serializers import ProfileSerializer
 from .models import Profile
-# Create your views here.
-
-
-class ProfileViewSet(viewsets.ModelViewSet):
-    # queryset = Profile.objects.select_related('user')
+class ProfileViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProfileSerializer
 
     def get_queryset(self):

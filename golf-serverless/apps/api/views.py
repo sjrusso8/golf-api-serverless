@@ -3,8 +3,8 @@ from django.db.models import Prefetch
 from django.http import JsonResponse
 
 from rest_framework import viewsets, generics, filters
-from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly
-from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.decorators import permission_classes, api_view
 from rest_framework.pagination import LimitOffsetPagination
 
 from .mixins import MultipleFieldLookupMixin
@@ -65,7 +65,7 @@ class CourseDetailsViewSet(MultipleFieldLookupMixin,
 
 
 @permission_classes([IsAuthenticated])
-class UserRoundDataViewSet(viewsets.ModelViewSet):
+class UserRoundDataViewSet(viewsets.ReadOnlyModelViewSet):
     """ Define an endpoint for a user to gather all round data
 
     - Usage: end point is used to track stats and round summaries
@@ -81,7 +81,7 @@ class UserRoundDataViewSet(viewsets.ModelViewSet):
 
 
 @permission_classes([IsAuthenticated])
-class UserShotDetailsViewSet(viewsets.ModelViewSet):
+class UserShotDetailsViewSet(viewsets.ReadOnlyModelViewSet):
     """ Define an endpoint for a user to gather all round data
 
     - Usage: end point is used to track stats and round summaries
@@ -97,7 +97,7 @@ class UserShotDetailsViewSet(viewsets.ModelViewSet):
 
 
 @permission_classes([IsAuthenticated])
-class UserPracticeViewSet(viewsets.ModelViewSet):
+class UserPracticeViewSet(viewsets.ReadOnlyModelViewSet):
     """ Define an endpoint for a user to gather all practice data
 
     - Usage: end point is used to track practice data

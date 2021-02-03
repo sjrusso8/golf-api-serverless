@@ -17,8 +17,7 @@ from apps.users.models import User
 from apps.users.serializers import UserSerializer, UserWriteSerializer, UserTokenObtainPairSerializer
 
 @permission_classes([IsAuthenticated])
-class UserViewSet(viewsets.ModelViewSet):
-    # queryset = User.objects.all()
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = UserSerializer
     permission_classes = []
 
