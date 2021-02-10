@@ -8,7 +8,7 @@ Check out the demo site of the API in action.
 
 The user account is *joegolfer@golfapi.com* and password is *overpar!*.  
 
-[Golf Caddie Live Demo](golf.stevenjrusso.com/login)
+[Golf Caddie Live Demo](http://golf.stevenjrusso.com/login)
 
 **Please note** logging in for the first time might take awhile since the lambda function needs to start up.
 
