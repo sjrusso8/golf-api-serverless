@@ -51,6 +51,7 @@ View the Open API doc [here](https://fiqohtk7w5.execute-api.us-east-2.amazonaws.
 - [x] Round Summary
 - [x] Shot by Shot statistics
 - [x] Mobile friendly UI
+- [x] Redepoly Aurora RDS with Terraform
 - [ ] Render GPS Coordinates in UI
 - [ ] User forms to post detailed data to API
 - [ ] Anything else?
@@ -66,3 +67,7 @@ When deploying with Zappa make sure you run these handful of commands after depl
 > zappa invoke --raw dev "from apps.users.models import User; User.objects.create_superuser('< email >', '< password >')"
 > 
 > zappa manage dev "collectstatic --noinput"
+
+## Using Terraform
+
+I am currently in the process of moving the infrastructure state into Terraform.  Terraform allows for infrastructure to be deployed as code (IaC).  This is a great way to manage all the settings of AWS Resources in one spot.  There is a potential conflict with 'Zappa' vs 'Terraform' on the deployment of the lambda function.  As of right now I plan on keeping the lambda function, api gateway, and a few other resources managed by 'Zappa'.
